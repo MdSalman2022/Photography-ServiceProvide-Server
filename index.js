@@ -46,26 +46,16 @@ async function run() {
         })
 
 
-        // app.get('/reviews', async (req, res) => {
-        //     const query = {}
-        //     const cursor = reviewCollection.find(query)
-        //     const reviews = await cursor.toArray()
-        //     console.log(reviews)
-        //     res.send(reviews)
-        // })
-
-        // get all default review 
-        // app.get('/allreviews', async (req, res) => {
-        //     const query = {}
-        //     const cursor = reviewCollection.find(query)
-        //     const reviews = await cursor.toArray()
-        //     res.send(reviews)
-        // })
-
-
         // get all review 
         app.get('/reviews', async (req, res) => {
             let query = {};
+
+            if (req.query.service_id) {
+                query = {
+                    service_id: req.query.service_id
+                }
+            }
+            console.log(req.query.service_id);
             const cursor = reviewCollection.find(query)
             const reviews = await cursor.toArray()
             console.log(reviews);
