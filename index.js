@@ -3,9 +3,7 @@ const cors = require('cors');
 const app = express()
 const port = process.env.PORT || 5000
 require('dotenv').config()
-
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-
 app.use(cors())
 app.use(express.json())
 
@@ -97,7 +95,6 @@ async function run() {
             res.send(result)
         })
 
-
         //Edit review
         app.get('/addreview/:id', async (req, res) => {
             const id = req.params.id;
@@ -132,19 +129,12 @@ async function run() {
 
             res.send(result)
         })
-
-
     }
     finally {
 
     }
-
-
 }
 run().catch(err => console.log(err))
-
-
-
 
 app.get('/', (req, res) => {
     res.send('PETER McKinnon photography server is running')
